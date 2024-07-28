@@ -9,16 +9,55 @@
 </head>
 
 <body>
-        <img src="img/1.avif" alt="nature" class="img">
+    <img src="img/1.avif" alt="nature" class="img" id="img">
 
-        <div class="btn-container">
-            <button type="button" class="btn">
-                <img src="img/previous.png" alt="previous" class="img-btn">
-            </button>
-            <button type="button" class="btn">
-                <img src="img/next.png" alt="next" class="img-btn">
-            </button>
-        </div>
+    <div class="btn-container">
+        <button type="button" class="btn">
+            <img src="img/previous.png" alt="previous" class="img-btn" onclick="previous()">
+        </button>
+        <button type="button" class="btn">
+            <img src="img/next.png" alt="next" class="img-btn" onclick="next()">
+        </button>
+    </div>
+
+    <script>
+        const img = [
+            "./img/1.avif",
+            "./img/2.avif",
+            "./img/3.avif",
+            "./img/4.avif",
+            "./img/5.avif"
+        ];
+
+        let imgIndex = 0;
+
+        function previous() {
+            if (imgIndex == 0) {
+                imgIndex = img.length - 1;
+            }
+            else {
+                imgIndex--;
+            }
+
+            const image = document.getElementById('img');
+            image.src = img[imgIndex];
+
+        }
+
+        function next() {
+            if (imgIndex == img.length - 1) {
+                imgIndex = 0;
+            }
+            else {
+                imgIndex++;
+            }
+
+            const image = document.getElementById('img');
+            image.src = img[imgIndex];
+        }
+
+        setInterval(next, 1000);
+    </script>
 </body>
 
 </html>
